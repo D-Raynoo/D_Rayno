@@ -17,8 +17,9 @@
           </h1>
           <Tilt
             :parallax="true"
+            :options="tiltOptions"
             ref="tilt"
-            class="w-fit flex justify-center h-fit rounded-lg overflow-hidden"
+            class="w-fit flex justify-center h-fit rounded-lg overflow-hidden cursor-pointer"
             @click="openInNewTab(project.url)"
           >
             <v-img
@@ -27,6 +28,7 @@
               class="flex justify-center items-center"
               cover
               :src="project.screenShot"
+              :lazy-src="project.lazyScreenShot"
             >
               <template v-slot:placeholder>
                 <div class="d-flex align-center justify-center fill-height">
@@ -48,21 +50,25 @@
 import { onMounted, ref, watch } from 'vue'
 import Tilt from 'vanilla-tilt-vue'
 import smartHome from '../assets/images/smart-home-screenshot.jpg'
+import lazySmartHome from '../assets/images/smart-home-screenshot-blured.jpg'
 
 const projects = ref([
   {
     title: 'smart-home landing page',
     screenShot: smartHome,
+    lazyScreenShot: lazySmartHome,
     url: 'https://smart-home-rayno.netlify.app/'
   },
   {
     title: 'smart-home landing page',
     screenShot: smartHome,
+    lazyScreenShot: lazySmartHome,
     url: 'https://smart-home-rayno.netlify.app/'
   },
   {
     title: 'smart-home landing page',
     screenShot: smartHome,
+    lazyScreenShot: lazySmartHome,
     url: 'https://smart-home-rayno.netlify.app/'
   }
 ])

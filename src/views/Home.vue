@@ -5,7 +5,8 @@
     >
       <strong>{{ $t('message.selfPresentation') }}</strong>
     </h1>
-    <div class="z-50">
+    <div class="z-50 flex items-center justify-center">
+      <v-progress-circular indeterminate v-if="modelLoading"></v-progress-circular>
       <Renderer
         class="cursor-grab hidden md:block"
         width="400"
@@ -79,6 +80,7 @@ import pcModel from '@/assets/models/computer/scene.gltf'
 const pc = ref(null)
 const loading = ref(false)
 const pcMin = ref(null)
+const modelLoading = ref(null)
 
 function load() {
   loading.value = true

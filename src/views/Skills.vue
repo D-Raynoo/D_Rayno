@@ -9,10 +9,11 @@
           <h1 class="w-fit text-3xl font-bold absolute m-auto left-0 right-0 top-12">
             {{ $t('message.toolsText.devTools') }}
           </h1>
-          <div class="flex items-center justify-center">
+          <v-container class="flex items-center justify-center">
             <ul class="text-xl font-bold">
               <li v-for="tool in devTools" :key="tool">{{ tool }}</li>
             </ul>
+            <v-progress-circular indeterminate v-if="loading"></v-progress-circular>
             <Renderer
               class="cursor-grab"
               width="400"
@@ -21,9 +22,14 @@
               shadow
               :orbit-ctrl="{ autoRotate: true, enableZoom: false }"
             >
-              <Camera :position="{ x: 0, y: 5, z: 16 }" ref="cam" />
+              <Camera :position="{ x: 0, y: 0.5, z: 2 }" ref="cam" />
               <Scene>
-                <GltfModel :src="devToolsModel" :position="{ x: 0, y: 0, z: 0 }" />
+                <GltfModel
+                  @progress="loading = true"
+                  @load="loading = false"
+                  :src="devToolsModel"
+                  :position="{ x: 0, y: 0, z: 0 }"
+                />
                 <AmbientLight />
                 <SpotLight
                   :intensity="0.6"
@@ -51,13 +57,14 @@
                 />
               </Scene>
             </Renderer>
-          </div>
+          </v-container>
         </v-window-item>
         <v-window-item class="w-fit px-20 mx-auto h-fit relative">
           <h1 class="w-fit text-3xl font-bold absolute m-auto left-0 right-0 top-12">
             {{ $t('message.toolsText.designTools') }}
           </h1>
-          <div class="flex items-center justify-center">
+          <v-container class="flex items-center justify-center">
+            <v-progress-circular indeterminate v-if="loading"></v-progress-circular>
             <ul class="text-xl font-bold">
               <li v-for="tool in designTools" :key="tool">{{ tool }}</li>
             </ul>
@@ -69,9 +76,14 @@
               shadow
               :orbit-ctrl="{ autoRotate: true, enableZoom: false }"
             >
-              <Camera :position="{ x: 0, y: 5, z: 16 }" ref="cam" />
+              <Camera :position="{ x: 0, y: 0.5, z: 1 }" ref="cam" />
               <Scene>
-                <GltfModel :src="designToolsModel" :position="{ x: 0, y: 0, z: 0 }" />
+                <GltfModel
+                  @progress="loading = true"
+                  @load="loading = false"
+                  :src="designToolsModel"
+                  :position="{ x: 0, y: 0, z: 0 }"
+                />
                 <AmbientLight />
                 <SpotLight
                   :intensity="1"
@@ -87,7 +99,7 @@
                 />
               </Scene>
             </Renderer>
-          </div>
+          </v-container>
         </v-window-item>
       </v-window>
 
@@ -96,10 +108,12 @@
           <h1 class="w-fit text-3xl mb-4 font-bold">
             {{ $t('message.toolsText.devTools') }}
           </h1>
-          <div class="flex justify-between mb-4">
+          <v-container class="flex justify-between mb-4">
+            <v-progress-circular indeterminate v-if="loading"></v-progress-circular>
             <ul class="text-xl font-bold">
               <li v-for="tool in devTools" :key="tool">{{ tool }}</li>
             </ul>
+
             <Renderer
               class="cursor-grab sm:hidden"
               width="150"
@@ -108,9 +122,14 @@
               shadow
               :orbit-ctrl="{ autoRotate: true, enableZoom: false }"
             >
-              <Camera :position="{ x: 0, y: 5, z: 16 }" ref="cam" />
+              <Camera :position="{ x: 0, y: 0.5, z: 2 }" ref="cam" />
               <Scene>
-                <GltfModel :src="devToolsModel" :position="{ x: 0, y: 0, z: 0 }" />
+                <GltfModel
+                  @progress="loading = true"
+                  @load="loading = false"
+                  :src="devToolsModel"
+                  :position="{ x: 0, y: 0, z: 0 }"
+                />
                 <AmbientLight />
                 <SpotLight
                   :intensity="0.6"
@@ -146,9 +165,14 @@
               shadow
               :orbit-ctrl="{ autoRotate: true, enableZoom: false }"
             >
-              <Camera :position="{ x: 0, y: 5, z: 16 }" ref="cam" />
+              <Camera :position="{ x: 0, y: 0.5, z: 2 }" ref="cam" />
               <Scene>
-                <GltfModel :src="devToolsModel" :position="{ x: 0, y: 0, z: 0 }" />
+                <GltfModel
+                  @progress="loading = true"
+                  @load="loading = false"
+                  :src="devToolsModel"
+                  :position="{ x: 0, y: 0, z: 0 }"
+                />
                 <AmbientLight />
                 <SpotLight
                   :intensity="0.6"
@@ -176,13 +200,14 @@
                 />
               </Scene>
             </Renderer>
-          </div>
+          </v-container>
         </div>
         <div class="sm:w-2/3 sm:mx-auto">
           <h1 class="w-fit text-3xl mb-4 font-bold">
             {{ $t('message.toolsText.designTools') }}
           </h1>
-          <div class="flex justify-between">
+          <v-container class="flex justify-between">
+            <v-progress-circular indeterminate v-if="loading"></v-progress-circular>
             <ul class="text-xl font-bold">
               <li v-for="tool in designTools" :key="tool">{{ tool }}</li>
             </ul>
@@ -194,9 +219,14 @@
               shadow
               :orbit-ctrl="{ autoRotate: true, enableZoom: false }"
             >
-              <Camera :position="{ x: 0, y: 5, z: 16 }" ref="cam" />
+              <Camera :position="{ x: 0, y: 0.5, z: 1 }" ref="cam" />
               <Scene>
-                <GltfModel :src="designToolsModel" :position="{ x: 0, y: 0, z: 0 }" />
+                <GltfModel
+                  @progress="loading = true"
+                  @load="loading = false"
+                  :src="designToolsModel"
+                  :position="{ x: 0, y: 0, z: 0 }"
+                />
                 <AmbientLight />
                 <SpotLight
                   :intensity="1"
@@ -220,9 +250,14 @@
               shadow
               :orbit-ctrl="{ autoRotate: true, enableZoom: false }"
             >
-              <Camera :position="{ x: 0, y: 5, z: 16 }" ref="cam" />
+              <Camera :position="{ x: 0, y: 0.5, z: 1 }" ref="cam" />
               <Scene>
-                <GltfModel :src="designToolsModel" :position="{ x: 0, y: 0, z: 0 }" />
+                <GltfModel
+                  @progress="loading = true"
+                  @load="loading = false"
+                  :src="designToolsModel"
+                  :position="{ x: 0, y: 0, z: 0 }"
+                />
                 <AmbientLight />
                 <SpotLight
                   :intensity="1"
@@ -238,7 +273,7 @@
                 />
               </Scene>
             </Renderer>
-          </div>
+          </v-container>
         </div>
       </section>
     </div>
@@ -257,12 +292,13 @@ import {
   Texture
 } from 'troisjs'
 import { ref } from 'vue'
-import devToolsModel from '/src/assets/models/threeD_Logos/allInOne/devTools/v2/scene.glb'
-import designToolsModel from '/src/assets/models/threeD_Logos/allInOne/designTools/scene.glb'
+import devToolsModel from '/src/assets/models/threeD_Logos/allInOne/devTools/optimized/scene.glb'
+import designToolsModel from '/src/assets/models/threeD_Logos/allInOne/designTools/optimized/scene.glb'
 
 const onboarding = ref(0)
 const devTools = ref(['HTML&CSS', 'JavaScript', 'PHP', 'Vue JS', 'Laravel', 'TailwindCSS'])
 const designTools = ref(['Adobe Photoshop', 'Adobe Illustrator'])
+const loading = ref(false)
 </script>
 
 <style>
