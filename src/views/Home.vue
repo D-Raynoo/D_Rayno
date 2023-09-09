@@ -16,7 +16,7 @@
         shadow
         :orbit-ctrl="{ autoRotate: false }"
       >
-        <Camera :position="{ x: -1, y: 0.5, z: 2 }" ref="cam" />
+        <Camera :position="{ x: 0, y: 6, z: 10 }" ref="cam" />
         <Scene>
           <GltfModel :src="pcModel" />
           <SpotLight
@@ -37,7 +37,7 @@
         shadow
         :orbit-ctrl="{ autoRotate: false }"
       >
-        <Camera :position="{ x: -1, y: 0.5, z: 2 }" ref="cam" />
+        <Camera :position="{ x: 0, y: 6, z: 10 }" ref="cam" />
         <Scene>
           <GltfModel :src="pcModel" />
           <SpotLight
@@ -75,7 +75,7 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { Camera, Renderer, Scene, GltfModel, AmbientLight, SpotLight } from 'troisjs'
-import pcModel from '@/assets/models/computer/scene.gltf'
+import pcModel from '@/assets/models/computerV2/scene.glb'
 
 const pc = ref(null)
 const loading = ref(false)

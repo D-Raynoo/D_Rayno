@@ -30,23 +30,7 @@
                     :src="devToolsModel"
                     :position="{ x: 0, y: 0, z: 0 }"
                   />
-                  <RefractionMesh
-                    v-if="loading"
-                    ref="mesh"
-                    :position="{ x: 0, y: -20, z: 20 }"
-                    auto-update
-                  >
-                    <TorusGeometry
-                      :radius="8"
-                      :tube="3"
-                      :radial-segments="8"
-                      :tubular-segments="6"
-                    />
-                    <StandardMaterial
-                      color="#ffffff"
-                      :props="{ metalness: 1, roughness: 0, flatShading: true }"
-                    />
-                  </RefractionMesh>
+
                   <AmbientLight />
                   <SpotLight
                     :intensity="0.6"
@@ -102,23 +86,7 @@
                     :src="designToolsModel"
                     :position="{ x: 0, y: 0, z: 0 }"
                   />
-                  <RefractionMesh
-                    v-if="loading"
-                    ref="mesh"
-                    :position="{ x: 0, y: -20, z: 20 }"
-                    auto-update
-                  >
-                    <TorusGeometry
-                      :radius="8"
-                      :tube="3"
-                      :radial-segments="8"
-                      :tubular-segments="6"
-                    />
-                    <StandardMaterial
-                      color="#ffffff"
-                      :props="{ metalness: 1, roughness: 0, flatShading: true }"
-                    />
-                  </RefractionMesh>
+
                   <AmbientLight />
                   <SpotLight
                     :intensity="1"
@@ -165,23 +133,7 @@
                     :src="devToolsModel"
                     :position="{ x: 0, y: 0, z: 0 }"
                   />
-                  <RefractionMesh
-                    v-if="loading"
-                    ref="mesh"
-                    :position="{ x: 0, y: -20, z: 20 }"
-                    auto-update
-                  >
-                    <TorusGeometry
-                      :radius="8"
-                      :tube="3"
-                      :radial-segments="8"
-                      :tubular-segments="6"
-                    />
-                    <StandardMaterial
-                      color="#ffffff"
-                      :props="{ metalness: 1, roughness: 0, flatShading: true }"
-                    />
-                  </RefractionMesh>
+
                   <AmbientLight />
                   <SpotLight
                     :intensity="0.6"
@@ -228,23 +180,7 @@
                     :src="devToolsModel"
                     :position="{ x: 0, y: 0, z: 0 }"
                   />
-                  <RefractionMesh
-                    v-if="loading"
-                    ref="mesh"
-                    :position="{ x: 0, y: -20, z: 20 }"
-                    auto-update
-                  >
-                    <TorusGeometry
-                      :radius="8"
-                      :tube="3"
-                      :radial-segments="8"
-                      :tubular-segments="6"
-                    />
-                    <StandardMaterial
-                      color="#ffffff"
-                      :props="{ metalness: 1, roughness: 0, flatShading: true }"
-                    />
-                  </RefractionMesh>
+
                   <AmbientLight />
                   <SpotLight
                     :intensity="0.6"
@@ -300,23 +236,7 @@
                     :src="designToolsModel"
                     :position="{ x: 0, y: 0, z: 0 }"
                   />
-                  <RefractionMesh
-                    v-if="loading"
-                    ref="mesh"
-                    :position="{ x: 0, y: -20, z: 20 }"
-                    auto-update
-                  >
-                    <TorusGeometry
-                      :radius="8"
-                      :tube="3"
-                      :radial-segments="8"
-                      :tubular-segments="6"
-                    />
-                    <StandardMaterial
-                      color="#ffffff"
-                      :props="{ metalness: 1, roughness: 0, flatShading: true }"
-                    />
-                  </RefractionMesh>
+
                   <AmbientLight />
                   <SpotLight
                     :intensity="1"
@@ -351,23 +271,7 @@
                     :src="designToolsModel"
                     :position="{ x: 0, y: 0, z: 0 }"
                   />
-                  <RefractionMesh
-                    v-if="loading"
-                    ref="mesh"
-                    :position="{ x: 0, y: -20, z: 20 }"
-                    auto-update
-                  >
-                    <TorusGeometry
-                      :radius="8"
-                      :tube="3"
-                      :radial-segments="8"
-                      :tubular-segments="6"
-                    />
-                    <StandardMaterial
-                      color="#ffffff"
-                      :props="{ metalness: 1, roughness: 0, flatShading: true }"
-                    />
-                  </RefractionMesh>
+
                   <AmbientLight />
                   <SpotLight
                     :intensity="1"
