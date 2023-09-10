@@ -3,9 +3,6 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import gltf from 'vite-plugin-gltf';
 
-
-
-// https://vitejs.dev/config/
 export default defineConfig({
   define: {
     __VUE_I18N_FULL_INSTALL__: true,
@@ -13,7 +10,13 @@ export default defineConfig({
     __INTLIFY_PROD_DEVTOOLS__: false,
   },
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: tag => tag.startsWith('Tres') && tag !== 'TresCanvas',
+        },
+      },
+    }),
     gltf()
   ],
   resolve: {

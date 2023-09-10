@@ -5,50 +5,16 @@
     >
       <strong>{{ $t('message.selfPresentation') }}</strong>
     </h1>
-    <div class="z-50 flex items-center justify-center">
-      <v-progress-circular indeterminate v-if="modelLoading"></v-progress-circular>
-      <Renderer
-        class="cursor-grab hidden md:block"
-        width="400"
-        height="300"
-        alpha
-        ref="pc"
-        shadow
-        :orbit-ctrl="{ autoRotate: false }"
-      >
-        <Camera :position="{ x: 0, y: 6, z: 10 }" ref="cam" />
-        <Scene>
-          <GltfModel :src="pcModel" />
-          <SpotLight
-            :intensity="5"
-            :position="{ y: 2, z: 2 }"
-            :cast-shadow="true"
-            :shadow-map-size="{ width: 400, height: 400 }"
-            color="#24afda"
-          />
-        </Scene>
-      </Renderer>
-      <Renderer
-        class="cursor-grab block md:hidden"
-        width="350"
-        height="260"
-        alpha
-        ref="pcMin"
-        shadow
-        :orbit-ctrl="{ autoRotate: false }"
-      >
-        <Camera :position="{ x: 0, y: 6, z: 10 }" ref="cam" />
-        <Scene>
-          <GltfModel :src="pcModel" />
-          <SpotLight
-            :intensity="5"
-            :position="{ y: 2, z: 2 }"
-            :cast-shadow="true"
-            :shadow-map-size="{ width: 400, height: 400 }"
-            color="#24afda"
-          />
-        </Scene>
-      </Renderer>
+    <div class="z-50 w-1/3 aspect-square cursor-grab flex items-center justify-center">
+      <TresCanvas alpha>
+        <TresPerspectiveCamera :position="[0, 4, 10]" />
+        <OrbitControls enable-damping damping-factor="0.1" :enable-zoom="false" />
+        <Suspense>
+          <GLTFModel :path="pcModel" draco ref="modelRef" />
+        </Suspense>
+        <TresAmbientLight />
+        <TresDirectionalLight :position="[-4, 8, 4]" :intensity="3" cast-shadow />
+      </TresCanvas>
     </div>
 
     <div class="flex w-fit h-auto items-center gap-4">
@@ -74,25 +40,14 @@
 
 <script setup>
 import { ref, onMounted, watch } from 'vue'
-import { Camera, Renderer, Scene, GltfModel, AmbientLight, SpotLight } from 'troisjs'
-import pcModel from '@/assets/models/computerV2/scene.glb'
+import { OrbitControls, GLTFModel } from '@tresjs/cientos'
+import pcModel from '@/assets/models/computerV2/scene.gltf'
 
-const pc = ref(null)
 const loading = ref(false)
-const pcMin = ref(null)
-const modelLoading = ref(null)
 
 function load() {
   loading.value = true
 }
-
-watch(pcMin, () => {
-  pcMin.value.three.cameraCtrl.enableZoom = false
-})
-
-onMounted(() => {
-  pc.value.three.cameraCtrl.enableZoom = false
-})
 </script>
 
 <style>
