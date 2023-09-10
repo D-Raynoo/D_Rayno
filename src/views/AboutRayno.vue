@@ -34,10 +34,16 @@
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRenderLoop } from '@tresjs/core'
 
-const onboarding = ref(null)
+const { resume } = useRenderLoop()
+
+onMounted(() => {
+  resume()
+})
+
 const i18n = useI18n()
 const responsibilities = ref([
   i18n.t('message.workExperience.responsibilities.responsibilities.c'),

@@ -9,6 +9,7 @@
       <TresCanvas alpha>
         <TresPerspectiveCamera :position="[0, 4, 10]" />
         <OrbitControls enable-damping damping-factor="0.1" :enable-zoom="false" />
+
         <Suspense>
           <GLTFModel :path="pcModel" draco ref="modelRef" />
         </Suspense>
@@ -39,8 +40,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
-import { OrbitControls, GLTFModel } from '@tresjs/cientos'
+import { ref } from 'vue'
+import { OrbitControls, GLTFModel, Levioso } from '@tresjs/cientos'
 import pcModel from '@/assets/models/computerV2/scene.gltf'
 
 const loading = ref(false)
