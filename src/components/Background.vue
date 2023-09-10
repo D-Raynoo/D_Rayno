@@ -1,22 +1,24 @@
 <template>
-  <TresCanvas shadows alpha window-size>
+  <TresCanvas alpha window-size>
     <TresPerspectiveCamera :position="[0, 0, 500]" />
+
     <TresMesh ref="bgModel">
       <Suspense>
         <GLTFModel :path="bg3D" draco />
       </Suspense>
     </TresMesh>
-    <TresDirectionalLight :position="[-4, 8, 4]" :intensity="1.5" cast-shadow />
+
+    <TresDirectionalLight :position="[-4, 8, 4]" :intensity="1.5" />
   </TresCanvas>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import bg3D from '@/assets/models/bg2/scene.gltf'
 import { OrbitControls, GLTFModel } from '@tresjs/cientos'
 import { useRenderLoop } from '@tresjs/core'
 
-const { onLoop } = useRenderLoop()
+const { onLoop, resume, isActive } = useRenderLoop()
 const bgModel = ref(null)
 
 onLoop(({ delta, elapsed }) => {
